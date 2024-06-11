@@ -38,7 +38,7 @@ import com.jjoe64.graphview.series.LineGraphSeries;
 
 
 
-public class MainActivity extends AppCompatActivity  {
+public class MainActivity extends AppCompatActivity {
     //opencv
     private CameraBridgeViewBase mOpenCvCameraView;
     //GraphView

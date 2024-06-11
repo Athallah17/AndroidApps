@@ -1,4 +1,4 @@
-#Sat Jun 08 02:02:23 WIB 2024
+#Tue Jun 11 20:43:50 WIB 2024
 base.0=D\:\\opencv-setup-androidstudio-master\\OpenCV4\\build\\intermediates\\dex\\debugAndroidTest\\mergeExtDexDebugAndroidTest\\classes.dex
 base.1=D\:\\opencv-setup-androidstudio-master\\OpenCV4\\build\\intermediates\\dex\\debugAndroidTest\\mergeLibDexDebugAndroidTest\\0\\classes.dex
 base.2=D\:\\opencv-setup-androidstudio-master\\OpenCV4\\build\\intermediates\\dex\\debugAndroidTest\\mergeProjectDexDebugAndroidTest\\0\\classes.dex

@@ -1,12 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:opencv="http://schemas.android.com/tools">
 
     <org.opencv.android.JavaCameraView
         android:id="@+id/camera_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:visibility="visible"
+        opencv:show_fps="true"  opencv:camera_id="any"/>
+
+    <com.example.myapplication.CameraGridActivity
+        android:id="@+id/grid_overlay"
+        android:layout_width="400dp"
+        android:layout_height="800dp"
         android:visibility="visible" />
 
 </RelativeLayout>
