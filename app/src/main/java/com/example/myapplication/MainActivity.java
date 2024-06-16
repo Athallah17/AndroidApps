@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -15,8 +16,10 @@ import android.view.SurfaceView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -24,6 +27,7 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import org.opencv.android.JavaCameraView;
 import org.opencv.android.OpenCVLoader;
 import org.opencv.android.CameraBridgeViewBase;
 import org.opencv.core.Mat;
@@ -38,7 +42,7 @@ import com.jjoe64.graphview.series.LineGraphSeries;
 
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements CameraBridgeViewBase.CvCameraViewListener2 {
     //opencv
     private CameraBridgeViewBase mOpenCvCameraView;
     //GraphView
@@ -50,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
     private Handler handler = new Handler();
     private Runnable runnable;
     private int elapsedTime = 0;
+    private static final int CAMERA_REQUEST_CODE = 1;
     private Button cameraButton;
 
 
@@ -108,12 +113,29 @@ public class MainActivity extends AppCompatActivity {
                 startCamera();
             }
         });
+        // Initialize OpenCV camera view
+        mOpenCvCameraView = findViewById(R.id.camera_view);
+        mOpenCvCameraView.setVisibility(View.VISIBLE);
+        mOpenCvCameraView.setCvCameraViewListener(this);
     }
 
     private void startCamera() {
         Intent intent = new Intent(MainActivity.this, CameraActivity.class);
-        startActivity(intent);
+        startActivityForResult(intent, CAMERA_REQUEST_CODE);
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == CAMERA_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
+            Log.d("opencv", "Camera activity finished successfully");
+            mOpenCvCameraView.enableView();
+        } else {
+            Toast.makeText(this, "Camera initialization failed", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
     private void startSimulation() {
         // Set isSimulating to true
         isSimulating = true;
@@ -221,5 +243,17 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return dataPoints.toArray(new DataPoint[0]);
+    }
+
+    @Override
+    public void onCameraViewStarted(int width, int height) {
+
+    }
+    @Override
+    public void onCameraViewStopped() {
+    }
+    @Override
+    public Mat onCameraFrame(CameraBridgeViewBase.CvCameraViewFrame inputFrame) {
+        return inputFrame.rgba();
     }
 }
