@@ -4,6 +4,8 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Matrix;
+import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.SurfaceHolder;
@@ -22,6 +24,8 @@ public class MjpegView extends SurfaceView implements SurfaceHolder.Callback, Ru
     private Thread thread;
     private boolean isRunning = false;
     private String streamUrl;
+    private int displayedWidth = 0;
+    private int displayedHeight = 0;
 
     public MjpegView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -62,7 +66,6 @@ public class MjpegView extends SurfaceView implements SurfaceHolder.Callback, Ru
 
     }
 
-    @Override
     public void run() {
         InputStream inputStream = null;
         BufferedInputStream bufferedInputStream = null;
@@ -103,7 +106,29 @@ public class MjpegView extends SurfaceView implements SurfaceHolder.Callback, Ru
                             Log.d(TAG, "Frame received");
                             Canvas canvas = holder.lockCanvas();
                             if (canvas != null) {
-                                canvas.drawBitmap(bitmap, 0, 0, null);
+                                float canvasWidth = canvas.getWidth();
+                                float canvasHeight = canvas.getHeight();
+
+                                float videoWidth = bitmap.getWidth();
+                                float videoHeight = bitmap.getHeight();
+
+                                float scale = Math.min(canvasWidth / videoWidth, canvasHeight / videoHeight);
+
+                                displayedWidth = (int) (videoWidth * scale);
+                                displayedHeight = (int) (videoHeight * scale);
+
+                                float offsetX = (canvasWidth - displayedWidth) / 2;
+                                float offsetY = (canvasHeight - displayedHeight) / 2;
+
+                                Matrix matrix = new Matrix();
+                                matrix.postScale(scale, scale);
+                                matrix.postTranslate(offsetX, offsetY);
+
+                                canvas.drawBitmap(bitmap, matrix, null);
+
+                                // Draw the grid
+                                drawGrid(canvas, offsetX, offsetY, displayedWidth, displayedHeight);
+
                                 holder.unlockCanvasAndPost(canvas);
                             }
                         } else {
@@ -125,6 +150,28 @@ public class MjpegView extends SurfaceView implements SurfaceHolder.Callback, Ru
                     e.printStackTrace();
                 }
             }
+        }
+    }
+
+    private void drawGrid(Canvas canvas, float offsetX, float offsetY, int width, int height) {
+        Paint paint = new Paint();
+        paint.setColor(0xFFFFFFFF); // White color for grid lines
+        paint.setStrokeWidth(1);
+
+        int numColumns = 5; // Number of vertical lines
+        int numRows = 5; // Number of horizontal lines
+
+        float colWidth = width / (float) numColumns;
+        float rowHeight = height / (float) numRows;
+
+        for (int i = 1; i < numColumns; i++) {
+            float x = offsetX + i * colWidth;
+            canvas.drawLine(x, offsetY, x, offsetY + height, paint);
+        }
+
+        for (int i = 1; i < numRows; i++) {
+            float y = offsetY + i * rowHeight;
+            canvas.drawLine(offsetX, y, offsetX + width, y, paint);
         }
     }
 }
