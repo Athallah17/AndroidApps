@@ -79,7 +79,7 @@ public class CameraActivity extends Activity implements CameraBridgeViewBase.CvC
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         setContentView(R.layout.activity_camera);
 
-        // Camera External
+//         Camera External
 //        mOpenCvCameraView = findViewById(R.id.camera_view);
 //        mOpenCvCameraView.setVisibility(SurfaceView.VISIBLE);
 //        mOpenCvCameraView.setCvCameraViewListener(this);
