@@ -1,0 +1,19 @@
+@echo off
+"C:\\Users\\ASUS\\AppData\\Local\\Android\\Sdk\\cmake\\3.22.1\\bin\\cmake.exe" ^
+  "-HD:\\opencv-setup-androidstudio-master\\OpenCV4\\libcxx_helper" ^
+  "-DCMAKE_SYSTEM_NAME=Android" ^
+  "-DCMAKE_EXPORT_COMPILE_COMMANDS=ON" ^
+  "-DCMAKE_SYSTEM_VERSION=21" ^
+  "-DANDROID_PLATFORM=android-21" ^
+  "-DANDROID_ABI=arm64-v8a" ^
+  "-DCMAKE_ANDROID_ARCH_ABI=arm64-v8a" ^
+  "-DANDROID_NDK=C:\\Users\\ASUS\\AppData\\Local\\Android\\Sdk\\ndk\\26.1.10909125" ^
+  "-DCMAKE_ANDROID_NDK=C:\\Users\\ASUS\\AppData\\Local\\Android\\Sdk\\ndk\\26.1.10909125" ^
+  "-DCMAKE_TOOLCHAIN_FILE=C:\\Users\\ASUS\\AppData\\Local\\Android\\Sdk\\ndk\\26.1.10909125\\build\\cmake\\android.toolchain.cmake" ^
+  "-DCMAKE_MAKE_PROGRAM=C:\\Users\\ASUS\\AppData\\Local\\Android\\Sdk\\cmake\\3.22.1\\bin\\ninja.exe" ^
+  "-DCMAKE_LIBRARY_OUTPUT_DIRECTORY=D:\\opencv-setup-androidstudio-master\\OpenCV4\\build\\intermediates\\cxx\\Debug\\2i1a1q3t\\obj\\arm64-v8a" ^
+  "-DCMAKE_RUNTIME_OUTPUT_DIRECTORY=D:\\opencv-setup-androidstudio-master\\OpenCV4\\build\\intermediates\\cxx\\Debug\\2i1a1q3t\\obj\\arm64-v8a" ^
+  "-DCMAKE_BUILD_TYPE=Debug" ^
+  "-BD:\\opencv-setup-androidstudio-master\\OpenCV4\\.cxx\\Debug\\2i1a1q3t\\arm64-v8a" ^
+  -GNinja ^
+  "-DANDROID_STL=c++_shared"

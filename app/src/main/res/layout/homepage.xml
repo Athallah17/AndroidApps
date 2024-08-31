@@ -33,7 +33,7 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:id="@+id/rznvvdpz7oa"
+                    android:id="@+id/profilepicture"
                     android:layout_width="50dp"
                     android:layout_height="52dp"
                     android:layout_marginEnd="9dp"
@@ -41,7 +41,7 @@
                     android:src="@drawable/aot" />
 
                 <TextView
-                    android:id="@+id/rb45fjpsfjh9"
+                    android:id="@+id/name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
@@ -202,26 +202,30 @@
                 </LinearLayout> <!-- Dashboard -->
 
 
-                <LinearLayout
-                    android:id="@+id/cambox"
+
+
+                <EditText
+                    android:id="@+id/ipinput"
+                    android:gravity="center_horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="323dp"
-                    android:layout_marginHorizontal="13dp"
-                    android:layout_marginBottom="57dp"
-                    android:background="@drawable/cambox"
-                    android:orientation="vertical">
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="15dp"
+                    android:hint="Enter IP Address" />
 
-                    <org.opencv.android.JavaCameraView
-                        android:id="@+id/camera_view"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:visibility="visible"
-                        opencv:show_fps="true"  opencv:camera_id="any"/>
-
-                </LinearLayout>
+<!--                <Button-->
+<!--                    android:id="@+id/camera_button"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:background="@drawable/button"-->
+<!--                    android:text="Connect"-->
+<!--                    android:textColor="#000000"-->
+<!--                    android:textSize="17sp"-->
+<!--                    android:paddingVertical="15dp"-->
+<!--                    android:layout_marginHorizontal="44dp"-->
+<!--                    android:gravity="center_horizontal" />-->
 
                 <Button
-                    android:id="@+id/camera_button"
+                    android:id="@+id/ip_button"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/button"
@@ -239,7 +243,7 @@
                     android:layout_marginHorizontal="33dp"
                     android:layout_marginVertical="90dp"
                     android:layout_centerInParent ="true"
-                    android:onClick="startDetect"
+
                     android:src="@drawable/drowsy1" />
 
 
@@ -259,7 +263,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginHorizontal="130dp"
-                    android:text="Blinkdata"
+                    android:text="Blink"
+                    android:textColor="#000000"
+                    android:textSize="25sp" />
+
+                <TextView
+                    android:id="@+id/text"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="130dp"
+                    android:text="Received"
                     android:textColor="#000000"
                     android:textSize="25sp" />
 
@@ -271,11 +284,6 @@
                     android:layout_height="300dp"
                     android:layout_centerInParent ="true" />
 
-                <TextView
-                    android:id="@+id/textView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="TextView" />
 
             </LinearLayout>  <!-- Inside Box -->
         </LinearLayout>
@@ -286,9 +294,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#FFFFFFFF"
-        android:paddingTop="13dp"
+        android:paddingTop="14dp"
         android:paddingBottom="3dp"
-        android:paddingLeft="45dp"
+        android:paddingLeft="92dp"
         android:paddingRight="45dp"
         android:elevation="8dp"
         android:orientation="vertical"
@@ -298,12 +306,13 @@
             android:id="@+id/rfbg2wyo7r8j"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="11dp"
+            android:layout_marginEnd="89dp"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
             <ImageView
-                android:id="@+id/r3ro9b0bpp6u"
+                android:id="@+id/home_button"
                 android:layout_width="18dp"
                 android:layout_height="20dp"
                 android:scaleType="fitXY"
@@ -311,25 +320,27 @@
 
             <LinearLayout
                 android:id="@+id/ruyyh3v0bur"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:orientation="vertical"></LinearLayout>
+                android:orientation="vertical">
+
+            </LinearLayout>
 
             <ImageView
-                android:id="@+id/rccvb4vnh8za"
+                android:id="@+id/settings_button"
                 android:layout_width="21dp"
                 android:layout_height="21dp"
-                android:layout_marginEnd="140dp"
                 android:scaleType="fitXY"
                 android:src="@drawable/settings" />
 
-            <ImageView
-                android:id="@+id/rmw4sa5l4sgl"
-                android:layout_width="20dp"
-                android:layout_height="21dp"
-                android:scaleType="fitXY"
-                android:src="@drawable/profile" />
+
+<!--            <ImageView-->
+<!--                android:id="@+id/rmw4sa5l4sgl"-->
+<!--                android:layout_width="20dp"-->
+<!--                android:layout_height="21dp"-->
+<!--                android:scaleType="fitXY"-->
+<!--                android:src="@drawable/profile" />-->
         </LinearLayout> <!-- Navbar -->
 
         <LinearLayout
@@ -337,9 +348,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
+            android:layout_marginEnd="75dp"
             android:orientation="horizontal">
+
             <TextView
-                android:id="@+id/rybxaznt8ptl"
+                android:id="@+id/home"
                 android:textColor="#11283C"
                 android:textSize="12sp"
                 android:layout_marginEnd="4dp"
@@ -348,24 +361,24 @@
                 android:layout_weight="1"
                 android:text="Home"
                 />
+
             <TextView
-                android:id="@+id/rx1s5xyhxoo"
+                android:id="@+id/settings"
                 android:textColor="#8D8D8D"
                 android:textSize="12sp"
-                android:layout_marginEnd="120dp"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="Settings"
                 />
-            <TextView
-                android:id="@+id/rr05ovewpplp"
-                android:textColor="#8D8D8D"
-                android:textSize="12sp"
+<!--            <TextView-->
+<!--                android:id="@+id/rr05ovewpplp"-->
+<!--                android:textColor="#8D8D8D"-->
+<!--                android:textSize="12sp"-->
 
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:text="Profile"
-                />
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:text="Profile"-->
+<!--                />-->
         </LinearLayout> <!-- NavbarText -->
     </LinearLayout>
 

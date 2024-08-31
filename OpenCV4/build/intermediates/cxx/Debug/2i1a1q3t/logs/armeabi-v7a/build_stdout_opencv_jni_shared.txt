@@ -1,0 +1,2 @@
+ninja: Entering directory `D:\opencv-setup-androidstudio-master\OpenCV4\.cxx\Debug\2i1a1q3t\armeabi-v7a'
+ninja: no work to do.

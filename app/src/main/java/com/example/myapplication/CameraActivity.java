@@ -97,6 +97,7 @@ public class CameraActivity extends Activity implements CameraBridgeViewBase.CvC
         Button finishButton = findViewById(R.id.finish_button);
         finishButton.setOnClickListener(v -> {
             Intent resultIntent = new Intent();
+            resultIntent.putExtra("STREAM_URL", ipCameraUrl);
             setResult(Activity.RESULT_OK, resultIntent);
             finish();
         });

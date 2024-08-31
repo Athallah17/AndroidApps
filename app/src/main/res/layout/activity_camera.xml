@@ -18,8 +18,6 @@
         android:layout_height="match_parent"
         android:src="@drawable/grid" />
 
-
-
     <Button
         android:id="@+id/finish_button"
         android:layout_width="wrap_content"
